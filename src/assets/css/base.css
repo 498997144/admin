@@ -1,0 +1,64 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+em,
+i {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+img,button,input {
+    border: 0;
+    vertical-align: middle;
+    outline: none;
+}
+a{
+    text-decoration: none;
+    color: #666;
+}
+.clearfix::after,.clearfix::before {
+    visibility: hidden;
+    clear: both;
+    display: block;
+    content: ".";
+    height: 0;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+body {
+    background: #fff;
+    font-size: 14px;
+    font-family: -apple-system,Helvetica,sans-serif Microsoft YaHei;
+    line-height: 1;
+    color: #666;
+    overflow-x:hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/*//平滑属性*/
+html,body{
+    scroll-behavior:smooth;
+    height: 100%;
+}
+/*去除移动端点击背景高亮*/
+*{
+      -webkit-tap-highlight-color: transparent;
+}
+/*改变移动控件在不同端的显示*/
+input {
+    -webkit-appearance: none;
+}
+/*禁止长按a,img标签弹出默认系统菜单*/
+img,
+a {
+    -webkit-touch-callout: none;
+}
