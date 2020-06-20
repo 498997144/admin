@@ -10,6 +10,8 @@ Vue.use(ElementUI)
 import './network' //引入网络请求模块
 import  'normalize.css' //引入标准重置样式
 import './assets/css/base.css' //引入全局样式
+import toast from './components/common/toast/index'
+Vue.use(toast)  //引入全局的提示框插件
 
 
 Vue.config.productionTip = false

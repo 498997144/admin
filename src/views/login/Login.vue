@@ -1,5 +1,5 @@
 <template>
-	<div class="login-container">
+	<div class="login-container" @keyup.enter="login">
         <div class="login">
             <img src="../../assets/logo.png">
             <el-input placeholder="请输入用户名"  @input="tip" class="username" prefix-icon="el-icon-user"  v-model.trim="username"> </el-input>
@@ -7,7 +7,7 @@
 			<el-input placeholder="请输入密码"  @input="tip" class="password" prefix-icon="el-icon-lock"  v-model.trim="password" show-password> </el-input>
             <div v-show="password.length < 6 || password.length > 16" class="passwordtip" >{{passwordTip}}</div>
 			<div class="login-btn">
-                <el-button type="primary" @click="login" @keydown="login">登陆</el-button>
+                <el-button type="primary" @click="login">登陆</el-button>
                 <el-button type="info" @click.native='reset' >重置</el-button>
 			</div>
 		</div>
@@ -19,17 +19,19 @@
 		name:'Login',
 		data(){
 			return{
-				username:'admin',
-				password:'123456',
-                usernameTip:'',
-                passwordTip:'',
+				username:'admin', //用户名
+				password:'123456', //密码
+                usernameTip:'',//提示信息
+                passwordTip:'',//提示信息
 			}
 		},
         methods:{
+           //重置表单方法
             reset(){
                 this.username = ''
                 this.password = ''
             },
+            //登陆方法
            async login(){
                if(this.username.length >= 5 && this.username.length <= 15 && this.password.length >= 6 && this.password.length <= 16 ){
                    const response = await this.axios.post('login',{username:this.username,password:this.password})
@@ -41,13 +43,12 @@
                   else{
                       this.$message({message:response.meta.msg,type:'error'})
                   }
-                  console.log(response)
                } 
                else{
                    this.$message({message:'请输入符合规则的数据',type:'warning'})
                }
             },
-            
+          //提示信息框方法
           tip(){
                 if (this.username.length < 5 && this.username.length > 0){
                     this.usernameTip = '用户名不能 少于5位!'

@@ -62,3 +62,8 @@ img,
 a {
     -webkit-touch-callout: none;
 }
+
+
+.linkActiveClass{
+    color: red!important;
+}
