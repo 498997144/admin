@@ -77,7 +77,7 @@
     .login-container{
         position: relative;
         background-color: rgb(212, 212, 212);
-        height: 100%;
+        height: 657px;
         .login{
 			display: flex;
 			flex-direction: column;

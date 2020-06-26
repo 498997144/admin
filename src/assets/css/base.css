@@ -67,3 +67,18 @@ a {
 .linkActiveClass{
     color: red!important;
 }
+
+.rotate::after {
+    position: absolute;
+    content: '';
+    height: 5px;
+    width: 5px;
+    border: 2px solid #666666;
+    border-right: none;
+    border-bottom: none;
+    transform: rotateZ(135deg);
+    right: 16px;
+}
+.rotateActive::after {
+    transform: rotateZ(225deg) !important;
+}

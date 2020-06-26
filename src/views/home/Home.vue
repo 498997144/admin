@@ -36,13 +36,9 @@ export default {
         //请求菜单栏数据
         this.getmenuList();
     },
-    mounted() {}
 };
 </script>
 
 <style lang="less" scoped>
-.home-container {
-    height: 100%;
-    background-color: red;
-}
+    
 </style>

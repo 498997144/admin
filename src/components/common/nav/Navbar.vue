@@ -16,10 +16,17 @@
 
 <style scoped lang="less">
 .nav-container{
+    position: fixed;
+    top: 80px;
+    left: 245px;
     display: flex;
     justify-content: start;
     align-items: center;
     height: 50px;
+    background-color: #7c7c7c;
+    width: 1121px;
+    color: white;
+    z-index: 6;
     li{
         height: 100%;
         padding: 0 15px;
@@ -27,7 +34,8 @@
         text-align: center;
         font-size: 16px;
         &:first-child{
-            color: #aaaaff;
+            color: #cad1c8;
+            cursor: pointer;
         }
      }
 }

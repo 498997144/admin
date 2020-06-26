@@ -9,7 +9,6 @@ toast.install = Vue => {
     Vue.prototype.$toast = (message='',callback) => {
         instance.message = message;
         instance.isShow = true;
-        // instance.callback = callback;
         instance.callback = () =>{
             callback && callback();
             instance.isShow = false;

@@ -23,12 +23,17 @@ export default {
 
 <style lang="less" scoped>
 .header-container{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 30px;
     height: 80px;
-    background-color: #666666;
+    background-color: #9a9a9a;
+    z-index: 6;
     .left{
         img{
             width: 60px;

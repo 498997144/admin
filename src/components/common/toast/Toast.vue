@@ -35,6 +35,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba(38, 38, 38, 0.3);
+    z-index: 5;
     .msg-box {
         display: flex;
         flex-direction: column;

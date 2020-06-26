@@ -6,6 +6,8 @@ import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
+import Treetable from 'vue-table-with-tree-grid'
+Vue.component('Treetable',Treetable)
 
 import './network' //引入网络请求模块
 import  'normalize.css' //引入标准重置样式

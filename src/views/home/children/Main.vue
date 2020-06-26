@@ -50,11 +50,16 @@ export default {
 <style scoped lang="less">
 .main-container {
     display: flex;
-    height: 600px;
-    background-color: #444;
+    // background-color:#bababa ;
+    // height: calc(100% - 80px);
+    // height: 100%;
     .left-bar {
-        flex: 20% 0 0;
-        background-color: aqua;
+        width: 245px;
+        height: calc(100% - 80px);
+        background-color: #bababa;
+        position: fixed;
+        top: 80px;
+        left: 0;
         li {
             .menu {
                 position: relative;
@@ -64,6 +69,7 @@ export default {
                 align-items: center;
                 background-color: #515453;
                 color: white;
+                cursor: pointer;
                 &::before {
                     margin-right: 15px;
                 }
@@ -96,7 +102,7 @@ export default {
                         margin-right: 15px;
                     }
                     &:hover {
-                        background-color: #666666;
+                        background-color: #0055ff;
                         color: #eeefee;
                     }
                 }
@@ -104,8 +110,9 @@ export default {
         }
     }
     .right-bar {
-        flex: 80% 0 0;
-        background-color: chocolate;
+        width: 100%;
+        margin-left:245px;
+        margin-top: 80px;
     }
 }
 .active::after {

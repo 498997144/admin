@@ -6,6 +6,8 @@ const Home = () => import('../views/home/Home.vue')
 const Welcome = () => import('../views/home/children/Welcome.vue')
 const Users = () => import('../views/home/children/users/Users.vue')
 const Power = () => import('../views/home/children/power/Power.vue')
+const Roles = () => import('../views/home/children/power/Roles.vue')
+const Categories = () => import('../views/home/children/goods/Categories.vue')
 
 Vue.use(VueRouter)
 
@@ -31,12 +33,23 @@ const routes = [{
             },
             {
                 path: 'users',
+                name: 'users',
                 component: Users
             }, 
             {
                 path: 'rights',
                 name:'power',
                 component: Power
+            }, 
+            {
+                path: 'roles',
+                name:'roles',
+                component: Roles
+            },
+            {
+                path: 'categories',
+                name:'categories',
+                component: Categories
             },
         ],
     },
@@ -52,7 +65,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
     const token = sessionStorage.getItem('token')
-    if (token && token != 'undefined' || to.path === '/login') {
+    if (token && token != 'undefined' || to.path == '/login') {
         next()
     } else {
         next('/login')
