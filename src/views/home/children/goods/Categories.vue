@@ -175,10 +175,7 @@
         created() {
             this.getcateList();
         },
-        mounted() {
-            
-        },
-               
+        
     }
 </script>
 
