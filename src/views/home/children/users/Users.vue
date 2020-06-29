@@ -29,7 +29,7 @@
                     <td>{{ item.email }}</td>
                     <td>{{ item.mobile }}</td>
                     <td>{{ item.role_name }}</td>
-                    <td>{{ item.create_time }}</td>
+                    <td>{{ item.create_time | dateFormat }}</td>
                     <td width="240px">
                         <el-button type="primary" size="mini" @click="getEdituser(item.id)">修改</el-button>
                         <el-button type="primary" size="mini" @click="deleteTip(item.username,item.id)">删除</el-button>
