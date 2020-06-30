@@ -1,13 +1,14 @@
 <template>
 	<div class="welcome-container">
-        这是welcome组件aaaaaaaaaaa
+        <Navbar>
+            <li>欢迎</li>
+        </Navbar>
 	</div>
 </template>
 
 <script>
 	export default {
 		name:'Welcome',
-		props:[],
 		computed:{
 			
 		},

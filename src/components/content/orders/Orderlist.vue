@@ -1,24 +1,27 @@
 <template>
-	<table class="goods-container">
+	<table class="orderslist-container">
         <thead>
             <tr>
                  <td>索引</td>
-                 <td>商品名称</td>
-                 <td>商品价格(元)</td>
-                 <td>商品重量</td>
-                 <td>创建时间</td>
+                 <td>订单编号</td>
+                 <td>订单价格</td>
+                 <td>是否付款</td>
+                 <td>是否发货</td>
+                 <td>下单时间</td>
                  <td>操作</td>
              </tr>
         </thead>
         <tbody>
             <tr  v-for="(item,index) in data" :key="item.goods_id">
                 <td>{{index+1}}</td>
-                <td>{{item.goods_name}}</td>
-                <td>{{item.goods_price}}</td>
-                <td>{{item.goods_weight}}</td>
-                <td>{{item.add_time | dateFormat}}</td>
+                <td>{{item.order_number}}</td>
+                <td>{{item.order_price}}</td>
+                <td>{{item.order_pay == 0 ? '否' : '是'}}</td>
+                <td>{{item.is_send}}</td>
+                <td>{{item.create_time | dateFormat}}</td>
                 <td class="btn">
-                    <el-button size="mini" type="danger" icon="el-icon-delete" @click="remove(item.goods_id)">删除</el-button>
+                    <el-button size="mini" type="primary" icon="el-icon-edit" @click="$emit('editClick')">修改</el-button>
+                    <el-button size="mini" type="success" icon="el-icon-location" @click="$emit('expressClick')">定位</el-button>
                 </td>
             </tr>
         </tbody>
@@ -27,7 +30,7 @@
 
 <script>
 	export default {
-		name:'Goods',
+		name:'Orderlist',
 		props:{
             data:{
                 type:Array,
@@ -36,28 +39,11 @@
                 }
             }
         },
-		computed:{
-			
-		},
-        methods:{
-            remove(id){
-                this.$toast('确定要删除这件商品吗?',async()=>{
-                    const response = await this.axios.delete(`goods/${id}`);
-                    if(response.meta.status == 200){
-                        this.$message.success(response.meta.msg);
-                        this.$emit('delSuccess');
-                    }else{
-                        this.$message.error(response.meta.msg);
-                    }
-                });
-            },
-        },
-		
 	}
 </script>
 
 <style scoped lang="less">
-.goods-container{
+.orderslist-container{
     margin: 0 auto;
     width: 99%;
     background-color: white;

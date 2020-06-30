@@ -66,11 +66,10 @@
 import Adduser from '../../../../components/content/users/Adduser.vue';
 import Edituser from '../../../../components/content/users/Edituser.vue';
 import Setrole from '../../../../components/content/users/Setrole.vue';
-import Navbar from '../../../../components/common/nav/Navbar.vue';
 export default {
     name: 'Users',
     components: {
-        Adduser,Edituser,Navbar,Setrole
+        Adduser,Edituser,Setrole
     },
     data() {
         return {

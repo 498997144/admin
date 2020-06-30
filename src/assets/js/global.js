@@ -5,6 +5,13 @@ import moment from 'moment';
 Vue.filter('dateFormat',(data,format='YYYY-MM-DD HH:mm:ss')=>{
     return moment(data).format(format)
 });
+//全局组件
+import Navbar from '../../components/common/nav/Navbar.vue'
+Vue.component('Navbar',Navbar)
+import Pagination from '../../components/common/pagination/Pagination.vue'
+Vue.component('Pagination',Pagination)
+import toast from '../../components/common/toast/Toast.vue'
+Vue.use(toast) 
 
 // 引入富文本编辑器
 import VueQuillEditor from 'vue-quill-editor'

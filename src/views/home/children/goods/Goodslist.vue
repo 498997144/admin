@@ -13,7 +13,7 @@
             <button class="allGood" @click="getAll">所有商品</button>
         </div>
         <!-- 商品列表区域 -->
-        <Goods :goodsList="goodsData.goodsList" @delSuccess="getGoodsList"></Goods>
+        <Goods :data="goodsData.goodsList" @delSuccess="getGoodsList"></Goods>
         <!-- 分页器 -->
         <Pagination :total="goodsData.total" :pagesize="queryInfo.pagesize" @getData="getData"></Pagination>
     </div>
@@ -22,11 +22,10 @@
 <script>
     import Navbar from '../../../../components/common/nav/Navbar.vue';
     import Goods from '../../../../components/content/goods/Goods.vue';
-    import Pagination from '../../../../components/content/goods/Pagination.vue';
     export default {
         name:'Goodslist',
         components: {
-			Navbar,Goods,Pagination,
+			Navbar,Goods,
         },
         data() {
             return {

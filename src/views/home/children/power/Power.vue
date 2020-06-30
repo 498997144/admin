@@ -31,12 +31,8 @@
 </template>
 
 <script>
-    import Navbar from '../../../../components/common/nav/Navbar.vue';
     export default {
         name:'Power',
-        components: {
-			Navbar,
-        },
         data() {
             return {
                 powerList:[],
