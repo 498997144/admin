@@ -5,9 +5,9 @@
         <!-- 搜索框 -->
         <div class="search-container">
             <input type="text" placeholder="请输入搜索条件" v-model.trim="queryInfo.query" />
-            <button class="el-icon-search" @click="searchData"></button>
+            <button class="el-icon-search" @click="getUsers"></button>
             <button class="addUser" @click="addShow = !addShow">添加用户</button>
-            <button class="allUser" @click="getUsers()">所有用户</button>
+            <button class="allUser" @click="getAll">所有用户</button>
         </div>
         <!-- //用户列表区域 -->
         <table>
@@ -38,26 +38,16 @@
                 </tr>
             </tbody>
         </table>
-        <!-- //分页器 -->
-        <div class="pagination-container">
-            <el-pagination
-                @prev-click="getData"
-                @current-change="getData"
-                @next-click="getData"
-                background
-                layout="prev, pager, next"
-                :total="userdata.total"
-                :page-size="8"
-            ></el-pagination>
-        </div>
+        <!-- 分页器 -->
+        <Pagination :total="userdata.total" :pagesize="queryInfo.pagesize" @getData="getData"></Pagination>
         <!-- 添加用户// -->
         <Adduser v-show="addShow" @close="close" ref="addUser" 
-        @addSuccess="getData(currentPage)"></Adduser>
+        @addSuccess="getData"></Adduser>
         <!-- 编辑用户 -->
         <Edituser v-show="editShow" @close="close"
-          @updateSuccess="getData(currentPage)" ref="editUser" :editData="editData"></Edituser>
+          @updateSuccess="getData" ref="editUser" :editData="editData"></Edituser>
           <!-- 分配角色 -->
-          <Setrole v-show="setRoleshow" @setSuccess="getData(currentPage)"
+          <Setrole v-show="setRoleshow" @setSuccess="getData"
           @close="close" ref="setRole" :setData="setRoleData"></Setrole>
     </div>
 </template>
@@ -76,7 +66,6 @@ export default {
             setRoleshow:false,
             addShow: false,
             editShow: false,
-            currentPage:1,
             queryInfo: {
                 query: '',
                 pagenum: 1,
@@ -85,7 +74,6 @@ export default {
             userdata: {
                 userList: [],
                 toal: 0,
-                pgenum: 0
             }, //分页数据
             editData: {}, //编辑表单数据
             setRoleData: {
@@ -96,20 +84,20 @@ export default {
         };
     },
     methods: {
-        async getUsers(query = '', pagenum = 1, pagesize = 8) {
-            const response = await this.axios.get('users', { params: { query, pagenum, pagesize } });
+        async getUsers() {
+            const response = await this.axios.get('users', { params: this.queryInfo});
             if (response.meta.status == 200) {
                 this.userdata.userList = response.data.users;
                 this.userdata.total = response.data.total;
-                this.userdata.pagenum = response.data.pagenum;
             }
         },
         getData(newPage) {
-            this.getUsers('', newPage);
-            this.currentPage = newPage;
+            this.queryInfo.pagenum = newPage;
+            this.getUsers();
         },
-        searchData() {
-            this.getUsers(this.queryInfo.query);
+        getAll(){
+            this.queryInfo.query = '';
+            this.getUsers();
         },
         async getEdituser(id) {
             const response = await this.axios.get(`users/${id}`);
@@ -217,11 +205,5 @@ table {
             }
         }
     }
-}
-.pagination-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 5px 0;
 }
 </style>

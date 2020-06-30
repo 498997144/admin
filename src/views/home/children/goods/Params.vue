@@ -5,9 +5,11 @@
             <li>商品管理</li>>
             <li>分类参数</li>
         </Navbar>
+        <!-- 提示信息 -->
         <el-alert title="注意:只允许为第三级分类设置相关参数" type="warning" style="margin: 60px auto 10px;width: 98%;"
         :closable="false" show-icon>
         </el-alert>
+        <!-- 商品分类操作 -->
         <el-row style="width: 98%;margin: 0 auto; background-color: white;">
             <el-col>
                 <span style="margin-left: 20px;">选择商品分类:</span>

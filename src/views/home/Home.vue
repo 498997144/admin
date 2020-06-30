@@ -14,17 +14,14 @@ import Main from './children/Main.vue';
 export default {
     name: 'Home',
     components: {
-        Header,
-        Main
+        Header,Main
     },
     data() {
         return {
             menuList: []
         };
     },
-    computed: {},
     methods: {
-        //网络请求相关方法
         async getmenuList() {
             const response = await this.axios.get('menus');
             if (response.meta.status == 200) {

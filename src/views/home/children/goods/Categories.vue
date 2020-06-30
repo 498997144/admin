@@ -26,18 +26,8 @@
                 <el-button size="mini" type="danger" icon="el-icon-delete">删除</el-button>
             </template>
         </Treetable>
-        <!-- //分页器 -->
-        <div class="pagination-container">
-            <el-pagination
-                @prev-click="getData"
-                @current-change="getData"
-                @next-click="getData"
-                background
-                layout="prev, pager, next"
-                :total="total"
-                :page-size="queryInfo.pagesize"
-            ></el-pagination>
-        </div>
+        <!-- 分页器 -->
+        <Pagination :total="total" :pagesize="queryInfo.pagesize" @getData="getData"></Pagination>
         <!-- 添加分类 -->
         <el-dialog title="添加分类" :visible.sync="addCateShow" width="50%" @close="close">
             <el-form :model="addCateForm" :rules="addCateRules" ref="addCate" label-width="100px">
@@ -115,9 +105,6 @@
                     ],
                 },
             }
-        },
-        computed:{
-            
         },
         methods:{
            async getcateList(){

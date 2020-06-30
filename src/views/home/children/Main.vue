@@ -50,9 +50,6 @@ export default {
 <style scoped lang="less">
 .main-container {
     display: flex;
-    // background-color:#bababa ;
-    // height: calc(100% - 80px);
-    // height: 100%;
     .left-bar {
         width: 245px;
         height: calc(100% - 80px);

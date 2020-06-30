@@ -28,21 +28,10 @@ export default {
             }
         }
     },
-    data() {
-        return {
-            // myeditData:this.editData,
-        };
-    },
     computed: {
         myeditData() {
             return this.editData;
         },
-        // unameShow(){
-        //     return this.addData.username.length < 5 || this.addData.username.length > 15
-        // },
-        // pwordShow(){
-        //     return this.addData.password.length < 6 || this.addData.password.length > 16
-        // },
         emailShow() {
             const reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z-9_-])+/;
             return !reg.test(this.myeditData.email);
@@ -84,6 +73,7 @@ export default {
     width: 100%;
     height: 100%;
     background-color: rgba(38, 38, 38, 0.3);
+     z-index: 20;
     .add-box {
         display: flex;
         flex-direction: column;

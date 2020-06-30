@@ -56,8 +56,11 @@
                   </tr>
               </tbody>
          </table>
+          <!-- 添加角色 -->
           <Addrole v-show="addShow" @addSuccess="getRolelist" @close="close" ref="addRole"></addRole>
+          <!-- 编辑角色 -->
           <Editrole v-show="editShow" @updateSuccess="getRolelist" @close="close" ref="editRole" :editData="editRoleData"></Editrole>
+          <!-- 设置权限 -->
           <Setpower v-show="setShow" @setSuccess="getRolelist" :powerList="powerList" :defaultPower.sync="defaultPower" :rid="currentRid" @close="close" ref="setPower"></Setpower>
     </div>
 </template>
@@ -122,20 +125,14 @@
                 if(item.children){
                     item.children.forEach(item => this.getPowers(item,list))
                 }
-                // else{
-                //     list.push(item.id);
-                // }
             },
            async setPower(rid){
                const item = this.roleList.filter(item => item.id == rid)[0];
                this.getPowers(item,this.defaultPower);
                this.currentRid = rid;
-               // console.log(this.defaultPower)
-               // console.log(this.roleList)
                 const response = await this.axios.get('rights/tree');
                 if(response.meta.status == 200){
                     this.powerList = response.data;
-                    // console.log(response.data)
                     this.setShow = !this.setShow;
                 }
             },
