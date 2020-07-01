@@ -1,7 +1,7 @@
 <template>
     <div class="header-container">
         <div class="left">
-            <img src="../../../assets/logo.png" />
+            <img src="../../../assets/images/logo.png" />
             <span>后台管理系统</span>
         </div>
         <el-button type="primary" class="logout" @click="logout">退出</el-button>
